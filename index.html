@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Application Portal - MUST</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Top University Header Bar -->
+  <header class="top-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="logo-shield">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+            <path d="M12 7v10"/>
+            <path d="M8 11h8"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Mbarara University of Science & Technology</span>
+          <span class="brand-sub">Admissions & Enrollment Directorate</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a href="#help" class="header-link" id="headerHelpBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          Need Help?
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="page-container" id="authPageView">
+    <!-- Pill Badge -->
+    <div class="portal-badge-wrapper">
+      <div class="portal-badge">
+        <span class="badge-dot"></span>
+        Online Application Portal
+      </div>
+    </div>
+
+    <!-- Login Card Container -->
+    <section class="card auth-card" aria-labelledby="loginHeading">
+      <div class="card-header">
+        <h1 id="loginHeading" class="card-title">Welcome Back</h1>
+        <p class="card-subtitle">Log in to access your application dashboard</p>
+      </div>
+
+      <form id="loginForm" class="auth-form" novalidate>
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="loginEmail" class="form-label">Email Address</label>
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </span>
+            <input 
+              type="email" 
+              id="loginEmail" 
+              name="email" 
+              class="form-input" 
+              placeholder="name@example.com" 
+              required
+              autocomplete="email"
+            >
+          </div>
+          <span class="error-msg" id="loginEmailError"></span>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="loginPassword" class="form-label">Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </span>
+            <input 
+              type="password" 
+              id="loginPassword" 
+              name="password" 
+              class="form-input has-toggle" 
+              placeholder="Enter your password" 
+              required
+              autocomplete="current-password"
+            >
+            <button 
+              type="button" 
+              class="password-toggle-btn" 
+              id="passwordToggleBtn" 
+              aria-label="Toggle password visibility"
+              title="Show/hide password"
+            >
+              <svg id="eyeIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg id="eyeOffIcon" class="hidden" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
+          <span class="error-msg" id="loginPasswordError"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-block" id="signInBtn">
+          <span class="btn-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+              <polyline points="10 17 15 12 10 7"/>
+              <line x1="15" y1="12" x2="3" y2="12"/>
+            </svg>
+          </span>
+          Sign In
+        </button>
+
+        <!-- Forgot Password Link -->
+        <div class="forgot-password-row">
+          <button type="button" class="link-btn" id="openForgotModalBtn">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="7.5" cy="15.5" r="5.5"/>
+              <path d="m21 2-9.6 9.6"/>
+              <path d="m15.5 7.5 3 3"/>
+            </svg>
+            Forgot your password?
+          </button>
+        </div>
+
+        <!-- Divider -->
+        <div class="auth-divider">
+          <span>New to the portal?</span>
+        </div>
+
+        <!-- Secondary Actions Row -->
+        <div class="auth-actions-grid">
+          <button type="button" class="btn btn-outline" id="openRegisterModalBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="8.5" cy="7" r="4"/>
+              <line x1="20" y1="8" x2="20" y2="14"/>
+              <line x1="23" y1="11" x2="17" y2="11"/>
+            </svg>
+            Create Account
+          </button>
+
+          <button type="button" class="btn btn-outline" id="openHowToApplyBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            How to Apply
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Footer Information -->
+    <footer class="portal-footer">
+      <p>© 2026 Mbarara University of Science & Technology. All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="#terms" id="termsLink">Terms of Admission</a>
+        <span>•</span>
+        <a href="#privacy" id="privacyLink">Privacy Policy</a>
+        <span>•</span>
+        <a href="#contact" id="contactLink">Admissions Helpdesk: +256 414 123 456</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- MODAL 1: CREATE ACCOUNT MODAL (Matches Image 1)          -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop hidden" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerModalTitle">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <div>
+            <h2 id="registerModalTitle" class="modal-title">Create Account</h2>
+            <p class="modal-subtitle">Provide your details to receive a temporary password.</p>
+          </div>
+          <button type="button" class="modal-close-btn" id="closeRegisterModalBtn" aria-label="Close modal">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Modal Form -->
+        <form id="registerForm" class="modal-form" novalidate>
+          <!-- Surname -->
+          <div class="form-group">
+            <label for="regSurname" class="form-label">Surname</label>
+            <div class="input-wrapper">
+              <span class="input-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </span>
+              <input 
+                type="text" 
+                id="regSurname" 
+                name="surname" 
+                class="form-input" 
+                placeholder="Surname" 
+                required
+                autocomplete="family-name"
+              >
+            </div>
+            <span class="error-msg" id="regSurnameError"></span>
+          </div>
+
+          <!-- Other Names -->
+          <div class="form-group">
+            <label for="regOtherNames" class="form-label">Other Names</label>
+            <div class="input-wrapper">
+              <span class="input-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </span>
+              <input 
+                type="text" 
+                id="regOtherNames" 
+                name="otherNames" 
+                class="form-input" 
+                placeholder="Other names" 
+                required
+                autocomplete="given-name"
+              >
+            </div>
+            <span class="error-msg" id="regOtherNamesError"></span>
+          </div>
+
+          <!-- Phone Number -->
+          <div class="form-group">
+            <label for="regPhone" class="form-label">Phone Number</label>
+            <div class="phone-input-group">
+              <div class="select-wrapper">
+                <select id="regCountryCode" class="country-code-select" name="countryCode">
+                  <option value="+256" selected>Uganda (+256)</option>
+                  <option value="+254">Kenya (+254)</option>
+                  <option value="+255">Tanzania (+255)</option>
+                  <option value="+250">Rwanda (+250)</option>
+                  <option value="+211">South Sudan (+211)</option>
+                  <option value="+257">Burundi (+257)</option>
+                  <option value="+243">DR Congo (+243)</option>
+                  <option value="+1">USA / Canada (+1)</option>
+                  <option value="+44">United Kingdom (+44)</option>
+                  <option value="+91">India (+91)</option>
+                  <option value="+other">Other (+...)</option>
+                </select>
+                <span class="select-chevron">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="input-wrapper phone-wrapper">
+                <span class="input-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </span>
+                <input 
+                  type="tel" 
+                  id="regPhone" 
+                  name="phone" 
+                  class="form-input" 
+                  placeholder="0770000000" 
+                  required
+                  autocomplete="tel"
+                >
+              </div>
+            </div>
+            <p class="field-hint">Use an active phone number to receive notifications.</p>
+            <span class="error-msg" id="regPhoneError"></span>
+          </div>
+
+          <!-- Email Address -->
+          <div class="form-group">
+            <label for="regEmail" class="form-label">Email Address</label>
+            <div class="input-wrapper">
+              <span class="input-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </span>
+              <input 
+                type="email" 
+                id="regEmail" 
+                name="email" 
+                class="form-input" 
+                placeholder="myemail@gmail.com" 
+                required
+                autocomplete="email"
+              >
+            </div>
+            <span class="error-msg" id="regEmailError"></span>
+            
+            <div class="email-helper-row">
+              <a href="https://accounts.google.com/signup" target="_blank" rel="noopener noreferrer" class="link-external">
+                Don't have an Email? Click to create
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 16 16 12 12 8"></polyline>
+                  <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Modal Action Buttons -->
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" id="cancelRegisterBtn">Close</button>
+            <button type="submit" class="btn btn-primary" id="submitRegisterBtn">
+              <span class="btn-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="8.5" cy="7" r="4"/>
+                  <line x1="20" y1="8" x2="20" y2="14"/>
+                  <line x1="23" y1="11" x2="17" y2="11"/>
+                </svg>
+              </span>
+              Create Account
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL 2: PASSWORD CREATED CONFIRMATION / TEMPORARY PASS -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop hidden" id="tempPasswordModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content success-modal-content">
+        <div class="success-icon-badge">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <h2 class="modal-title text-center">Account Created!</h2>
+        <p class="modal-subtitle text-center">
+          A temporary password has been dispatched to your phone number and email address.
+        </p>
+
+        <div class="temp-password-box">
+          <div class="temp-label">Your Generated Temporary Password:</div>
+          <div class="temp-code-row">
+            <span class="temp-code" id="generatedTempPass">MUST-748921</span>
+            <button type="button" class="btn-copy" id="copyPasswordBtn" title="Copy password">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <div class="temp-tip">You will be required to change this upon first successful login.</div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block" id="proceedToLoginBtn">
+          Continue to Sign In
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL 3: FORGOT PASSWORD MODAL                           -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop hidden" id="forgotModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2 class="modal-title">Reset Password</h2>
+            <p class="modal-subtitle">Enter your registered email address to receive password reset instructions.</p>
+          </div>
+          <button type="button" class="modal-close-btn" id="closeForgotModalBtn" aria-label="Close modal">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        <form id="forgotForm" class="modal-form">
+          <div class="form-group">
+            <label for="forgotEmail" class="form-label">Email Address</label>
+            <div class="input-wrapper">
+              <span class="input-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </span>
+              <input type="email" id="forgotEmail" class="form-input" placeholder="name@example.com" required>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" id="cancelForgotBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Send Reset Link</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL 4: HOW TO APPLY MODAL                              -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop hidden" id="howToApplyModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2 class="modal-title">How to Apply Online</h2>
+            <p class="modal-subtitle">Follow these quick steps to submit your application to MUST.</p>
+          </div>
+          <button type="button" class="modal-close-btn" id="closeHowToApplyModalBtn" aria-label="Close modal">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="guide-steps">
+          <div class="guide-step-item">
+            <div class="step-number">1</div>
+            <div class="step-body">
+              <h4>Create an Account</h4>
+              <p>Click "+ Create Account" and fill in your Surname, Other Names, Phone Number, and Email. A temporary password will be sent automatically.</p>
+            </div>
+          </div>
+          <div class="guide-step-item">
+            <div class="step-number">2</div>
+            <div class="step-body">
+              <h4>Sign In & Select Program</h4>
+              <p>Log in using your email and temporary password. Browse undergraduate or postgraduate programmes and choose your preferred study scheme.</p>
+            </div>
+          </div>
+          <div class="guide-step-item">
+            <div class="step-number">3</div>
+            <div class="step-body">
+              <h4>Upload Academic Documents</h4>
+              <p>Attach scanned copies of your UCE / UACE Pass Slips, Degree/Diploma certificates, and National ID or Passport.</p>
+            </div>
+          </div>
+          <div class="guide-step-item">
+            <div class="step-number">4</div>
+            <div class="step-body">
+              <h4>Pay Application Fee & Submit</h4>
+              <p>Generate a Payment Reference Number (PRN) for UGX 50,000 (East Africa) or USD 50 (International). Pay via Mobile Money (MTN/Airtel) or designated bank.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-primary btn-block" id="howToApplyCloseAction">Got it, let's start</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- APPLICANT DASHBOARD (Loaded upon successful login)      -->
+  <!-- ======================================================== -->
+  <section class="dashboard-view hidden" id="dashboardView">
+    <div class="dash-navbar">
+      <div class="dash-brand">
+        <div class="logo-shield">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+          </svg>
+        </div>
+        <div>
+          <strong>MUST Online Application Portal</strong>
+          <span class="dash-sub">Academic Year 2026/2027</span>
+        </div>
+      </div>
+      <div class="dash-user-menu">
+        <div class="user-info">
+          <span class="user-name" id="dashUserName">Applicant</span>
+          <span class="user-role" id="dashUserEmail">email@example.com</span>
+        </div>
+        <button type="button" class="btn btn-outline btn-sm" id="logoutBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <div class="dash-container">
+      <!-- Status Banner -->
+      <div class="welcome-banner">
+        <div>
+          <h2>Welcome, <span id="welcomeName">Applicant</span>! 👋</h2>
+          <p>Your application ID is <strong id="applicationRefId">MUST/ADM/2026/08421</strong>. Follow the progress below to complete your admission submission.</p>
+        </div>
+        <div class="badge-status-pill">
+          <span class="status-indicator"></span> Application In Progress
+        </div>
+      </div>
+
+      <!-- Application Progress Steps -->
+      <div class="progress-bar-card">
+        <div class="progress-step active completed">
+          <div class="step-circle">✓</div>
+          <div class="step-text">Account Created</div>
+        </div>
+        <div class="progress-line completed"></div>
+        <div class="progress-step active" id="progStep2">
+          <div class="step-circle">2</div>
+          <div class="step-text">Personal Details</div>
+        </div>
+        <div class="progress-line" id="progLine2"></div>
+        <div class="progress-step" id="progStep3">
+          <div class="step-circle">3</div>
+          <div class="step-text">Program Selection</div>
+        </div>
+        <div class="progress-line" id="progLine3"></div>
+        <div class="progress-step" id="progStep4">
+          <div class="step-circle">4</div>
+          <div class="step-text">Documents & Fee</div>
+        </div>
+      </div>
+
+      <!-- Interactive Tab Panels -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3>Application Step 2: Biodata & Study Choices</h3>
+        </div>
+        <form id="dashboardApplicationForm" class="dash-form">
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label class="form-label">Full Name</label>
+              <input type="text" id="dashFullName" class="form-input" readonly>
+            </div>
+            <div class="form-group flex-1">
+              <label class="form-label">Phone Number</label>
+              <input type="text" id="dashPhone" class="form-input" readonly>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label class="form-label">Entry Scheme</label>
+              <select id="entryScheme" class="form-input">
+                <option value="direct">Direct Entry (A-Level Leaver)</option>
+                <option value="diploma">Diploma Holder Entry</option>
+                <option value="mature">Mature Age Entry</option>
+                <option value="postgrad">Postgraduate / Masters Entry</option>
+              </select>
+            </div>
+            <div class="form-group flex-1">
+              <label class="form-label">Study Program (1st Choice)</label>
+              <select id="programChoice" class="form-input">
+                <option value="mbchb">Bachelor of Medicine and Bachelor of Surgery (MBChB)</option>
+                <option value="bcs" selected>Bachelor of Science in Computer Science (BCS)</option>
+                <option value="bse">Bachelor of Science in Software Engineering (BSE)</option>
+                <option value="bpharm">Bachelor of Pharmacy (BPharm)</option>
+                <option value="beng">Bachelor of Science in Biomedical Engineering</option>
+                <option value="bba">Bachelor of Business Administration (BBA)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label class="form-label">Campus</label>
+              <select class="form-input">
+                <option>Kihumuro Main Campus (Mbarara)</option>
+                <option>Town Campus (Mbarara Regional Referral)</option>
+              </select>
+            </div>
+            <div class="form-group flex-1">
+              <label class="form-label">Sponsorship Scheme</label>
+              <select class="form-input">
+                <option>Private Sponsorship Scheme</option>
+                <option>District Quota Scheme</option>
+                <option>Higher Education Students Financing Board (Loan)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="dash-actions-row">
+            <button type="button" class="btn btn-outline" id="saveDraftBtn">Save Draft</button>
+            <button type="submit" class="btn btn-primary" id="saveAndProceedBtn">Save & Generate PRN Payment Slip</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
